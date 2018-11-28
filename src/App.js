@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './Header.js'
+import Header from './Header'
 import RequestZipCode from './RequestZipCode';
+import ChooseFoodEntries from './ChooseFoodEntries'
 
 class App extends Component {
   state = {
@@ -20,7 +21,10 @@ class App extends Component {
         <Header />
         {
           this.state.zipCode ? 
-          `The zip code you have provided is ${this.state.zipCode}` : <RequestZipCode 
+          <ChooseFoodEntries 
+            zipCode={this.state.zipCode}
+          /> : 
+          <RequestZipCode 
             changeZipCode={this.changeZipCode}
           />
           }
