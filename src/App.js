@@ -6,12 +6,19 @@ import ChooseFoodEntries from './ChooseFoodEntries'
 
 class App extends Component {
   state = {
-    zipCode: ''
+    zipCode: '',
+    foodEntries: []
   }
 
   changeZipCode = newZipCode => {
     this.setState({
       zipCode: newZipCode
+    })
+  }
+
+  changeFoodEntries = foodEntries => {
+    this.setState({
+      foodEntries
     })
   }
 
@@ -21,9 +28,7 @@ class App extends Component {
         <Header />
         {
           this.state.zipCode ? 
-          <ChooseFoodEntries 
-            zipCode={this.state.zipCode}
-          /> : 
+          <ChooseFoodEntries /> : 
           <RequestZipCode 
             changeZipCode={this.changeZipCode}
           />
