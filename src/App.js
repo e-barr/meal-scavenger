@@ -3,11 +3,13 @@ import './App.css';
 import Header from './Header'
 import RequestZipCode from './RequestZipCode';
 import ChooseFoodEntries from './ChooseFoodEntries'
+import FoodChoiceTileContainer from './FoodChoiceTileContainer'
 
 class App extends Component {
   state = {
     zipCode: '',
-    foodEntries: []
+    foodEntries: [],
+    foodEntriesSelected: false
   }
 
   changeZipCode = newZipCode => {
@@ -20,7 +22,8 @@ class App extends Component {
     event.preventDefault()
     let foodEntries = entries.filter(entry => entry !== "")
     this.setState({
-      foodEntries
+      foodEntries,
+      foodEntriesSelected: true
     })
   }
 
@@ -36,6 +39,12 @@ class App extends Component {
           <RequestZipCode 
             changeZipCode={this.changeZipCode}
           />
+          }
+          {
+            this.state.foodEntries.length > 0 && this.state.foodEntriesSelected ?
+            <FoodChoiceTileContainer 
+              foodEntries={this.state.foodEntries}
+            /> : null
           }
       </div>
     );
