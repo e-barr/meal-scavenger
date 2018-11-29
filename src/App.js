@@ -16,7 +16,9 @@ class App extends Component {
     })
   }
 
-  changeFoodEntries = foodEntries => {
+  setFoodEntries = (event, entries) => {
+    event.preventDefault()
+    let foodEntries = entries.filter(entry => entry !== "")
     this.setState({
       foodEntries
     })
@@ -28,7 +30,9 @@ class App extends Component {
         <Header />
         {
           this.state.zipCode ? 
-          <ChooseFoodEntries /> : 
+          <ChooseFoodEntries
+            setFoodEntries={this.setFoodEntries}
+           /> : 
           <RequestZipCode 
             changeZipCode={this.changeZipCode}
           />

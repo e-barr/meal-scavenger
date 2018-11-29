@@ -2,41 +2,60 @@ import React, { Component } from 'react'
 
 class ChooseFoodEntries extends Component {
     state = {
-        foodEntries: [],
-        inputFieldCount: 1,
+        // foodEntries: [],
+        first: '',
+        second: '',
+        third: ''
     }
 
-    addInputField = () => {
+    changeItem = event => {
         this.setState({
-            inputFieldCount: this.state.inputFieldCount + 1
+            [event.target.name]: event.target.value
         })
     }
 
-    renderInputFields = () => {
-        const fieldCount = this.state.inputFieldCount
-        let inputFieldsContainer = []
-
-        for (let i = 1; i <= fieldCount; i++) {
-            inputFieldsContainer.push(<li key={i}><input type="text" placeholder="food item"></input></li>)
+    addToFoodEntries = event => {
+        let foodName = event.target.value
+        let foodEntries = this.state.foodEntries
+        if (this.state.foodEntries.includes(foodName) === false) {
+            this.setState({
+                foodEntries: [ ...foodEntries, foodName]
+            })
         }
-
-        return (
-            <div className="input-fields-container">
-            {inputFieldsContainer}
-            </div>
-        )
     }
 
     render() {
+        let { first, second, third } = { ...this.state }
         return (
                 <div className="choose-food-entries">
-                    I want to search for the best:
-                    <button onClick={this.addInputField}>+</button>
+                    I want to search for the best (up to three items):
                     <br></br>
-                    {this.renderInputFields()}
+                    <form onSubmit={(event) => this.props.setFoodEntries(event, [first, second, third])}>
+                        <input 
+                            type="text"
+                            placeholder="food item"
+                            name="first"
+                            onChange={this.changeItem}
+                        />
+                        <br></br>
+                        <input
+                            type="text"
+                            placeholder="food item"
+                            name="second"
+                            onChange={this.changeItem} 
+                            />
+                        <br></br>
+                        <input
+                            type="text"
+                            placeholder="food item"
+                            name="third"
+                            onChange={this.changeItem} 
+                        />
+                        <br></br>
+                        <button>start scavenging!</button>
+                    </form>
                     <br></br>
                     in my area.
-                    <button>start scavenging!</button>
                 </div>
         )
     }

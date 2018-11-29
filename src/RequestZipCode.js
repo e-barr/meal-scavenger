@@ -15,7 +15,7 @@ class RequestZipCode extends Component {
         return (
             <div className="request-zip-code">
                 Please provide your 5 digit zip code.
-                <form onSubmit={() => this.props.changeZipCode(this.state.currentInput)}>
+                <form onSubmit={event => this.props.changeZipCode(event, this.state.currentInput)}>
                     <input type="text" pattern="[0-9]{5}" onChange={event => this.changeCurrentInput(event.target.value)}></input>
                     <button type="submit">let me choose my foods now!</button>
                 </form>
