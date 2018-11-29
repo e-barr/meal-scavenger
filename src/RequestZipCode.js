@@ -9,7 +9,6 @@ class RequestZipCode extends Component {
         this.setState({
             currentInput
         })
-        console.log(this.state.currentInput)
     }
     render() {
         return (
