@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet'
 import './App.css';
 import Header from './Header'
 import RequestCurrentLocation from './RequestCurrentLocation';
@@ -30,6 +31,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Helmet>
+          {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=`${process.env.REACT_APP_ADDRESS_AUTOCOMPLETE_API_KEY}`&libraries=places"></script> */}
+        </Helmet>
         <Header />
         {
           this.state.zipCode ? 

@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+const address_api = process.env.REACT_APP_ADDRESS_AUTOCOMPLETE_API
+
+console.log(`address api is: ${address_api.length > 0}`)
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
