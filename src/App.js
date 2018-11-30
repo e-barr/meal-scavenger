@@ -6,6 +6,8 @@ import RequestCurrentLocation from './RequestCurrentLocation';
 import ChooseFoodEntries from './ChooseFoodEntries'
 import FoodChoiceTileContainer from './FoodChoiceTileContainer'
 
+const address_api = `${process.env.REACT_APP_ADDRESS_AUTOCOMPLETE_API}`
+
 class App extends Component {
   state = {
     zipCode: '',
@@ -29,10 +31,11 @@ class App extends Component {
   }
 
   render() {
+    console.log(`address api is: ${address_api.length > 0}`)
     return (
       <div className="App">
         <Helmet>
-          {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=`${process.env.REACT_APP_ADDRESS_AUTOCOMPLETE_API_KEY}`&libraries=places"></script> */}
+          <script type="text/javascript" src={`https://maps.googleapis.com/maps/api/js?key=${address_api}&libraries=places`}></script>
         </Helmet>
         <Header />
         {
