@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
-/* global google */
-import { Helmet } from 'react-helmet'
 import './App.css';
 import Header from './Header'
 import RequestCurrentLocation from './RequestCurrentLocation';
 import ChooseFoodEntries from './ChooseFoodEntries'
 import FoodChoiceTileContainer from './FoodChoiceTileContainer'
 
-const address_api = `${process.env.REACT_APP_ADDRESS_AUTOCOMPLETE_API}`
+const AddressDetails = props => {
+  return (
+    <div>
+      <pre>{JSON.stringify(props.place, null, 2)}</pre>
+    </div>
+  )
+}
 
 class App extends Component {
   state = {
-    zipCode: '',
-    initialAddress: '',
+    startAddress: '',
     foodEntries: [],
     foodEntriesSelected: false
   }
 
-  changeZipCode = newZipCode => {
-    this.setState({
-      zipCode: newZipCode
-    })
+  showPlaceDetails = (place) => {
+    console.log(place);
+    this.setState({ place });
   }
 
-  setInitialAddress = initialAddress => {
+  setStartAddress = startAddress => {
+    console.log(startAddress)
     this.setState({
-      initialAddress
+      startAddress
     })
   }
 
@@ -41,18 +44,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Helmet>
-          <script type="text/javascript" src={`https://maps.googleapis.com/maps/api/js?key=${address_api}&libraries=places`}></script>
-        </Helmet>
         <Header />
         {
-          this.state.zipCode ? 
-          <ChooseFoodEntries
+          this.state.startAddress ? 
+          <React.Fragment>
+            <ChooseFoodEntries
             setFoodEntries={this.setFoodEntries}
-           /> : 
+           />
+           <AddressDetails 
+            place={this.state.startAddress} 
+            />
+           </React.Fragment> : 
           <RequestCurrentLocation 
-            changeZipCode={this.changeZipCode}
-            setInitialAddress={this.setInitialAddress}
+            setStartAddress={this.setStartAddress}
+            showPlaceDetails={this.showPlaceDetails}
           />
           }
           {
