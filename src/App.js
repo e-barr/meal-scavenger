@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+/* global google */
 import { Helmet } from 'react-helmet'
 import './App.css';
 import Header from './Header'
@@ -11,6 +12,7 @@ const address_api = `${process.env.REACT_APP_ADDRESS_AUTOCOMPLETE_API}`
 class App extends Component {
   state = {
     zipCode: '',
+    initialAddress: '',
     foodEntries: [],
     foodEntriesSelected: false
   }
@@ -18,6 +20,12 @@ class App extends Component {
   changeZipCode = newZipCode => {
     this.setState({
       zipCode: newZipCode
+    })
+  }
+
+  setInitialAddress = initialAddress => {
+    this.setState({
+      initialAddress
     })
   }
 
@@ -31,7 +39,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(`address api is: ${address_api.length > 0}`)
     return (
       <div className="App">
         <Helmet>
@@ -45,6 +52,7 @@ class App extends Component {
            /> : 
           <RequestCurrentLocation 
             changeZipCode={this.changeZipCode}
+            setInitialAddress={this.setInitialAddress}
           />
           }
           {
