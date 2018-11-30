@@ -20,7 +20,7 @@ class RequestCurrentLocation extends Component {
   
     handlePlaceChanged() {
       const place = this.autocomplete.getPlace();
-      this.props.showPlaceDetails(place);
+      this.props.setStartAddress(place);
     }
   
     render() {

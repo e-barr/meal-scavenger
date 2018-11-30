@@ -8,7 +8,9 @@ import FoodChoiceTileContainer from './FoodChoiceTileContainer'
 const AddressDetails = props => {
   return (
     <div>
-      <pre>{JSON.stringify(props.place, null, 2)}</pre>
+      You have set your starting address at: <strong>
+        {props.startAddress}
+      </strong>
     </div>
   )
 }
@@ -16,19 +18,17 @@ const AddressDetails = props => {
 class App extends Component {
   state = {
     startAddress: '',
+    startAddressId: '',
+    startAddressPlaceId: '',
     foodEntries: [],
     foodEntriesSelected: false
   }
 
-  showPlaceDetails = (place) => {
-    console.log(place);
-    this.setState({ place });
-  }
-
-  setStartAddress = startAddress => {
-    console.log(startAddress)
+  setStartAddress = ({ formatted_address, id, place_id }) => {
     this.setState({
-      startAddress
+      startAddress: formatted_address,
+      startAddressId: id,
+      startAddressPlaceId: place_id 
     })
   }
 
@@ -52,12 +52,12 @@ class App extends Component {
             setFoodEntries={this.setFoodEntries}
            />
            <AddressDetails 
-            place={this.state.startAddress} 
+            startAddress={this.state.startAddress} 
             />
            </React.Fragment> : 
           <RequestCurrentLocation 
             setStartAddress={this.setStartAddress}
-            showPlaceDetails={this.showPlaceDetails}
+            // showPlaceDetails={this.showPlaceDetails}
           />
           }
           {
