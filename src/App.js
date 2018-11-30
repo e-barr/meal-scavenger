@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Header'
-import RequestZipCode from './RequestZipCode';
+import RequestCurrentLocation from './RequestCurrentLocation';
 import ChooseFoodEntries from './ChooseFoodEntries'
 import FoodChoiceTileContainer from './FoodChoiceTileContainer'
 
@@ -36,7 +36,7 @@ class App extends Component {
           <ChooseFoodEntries
             setFoodEntries={this.setFoodEntries}
            /> : 
-          <RequestZipCode 
+          <RequestCurrentLocation 
             changeZipCode={this.changeZipCode}
           />
           }
