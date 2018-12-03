@@ -14,14 +14,14 @@ class ChooseFoodEntries extends Component {
         })
     }
 
-    addToFoodEntries = event => {
-        let foodName = event.target.value
-        let foodEntries = this.state.foodEntries
-        if (this.state.foodEntries.includes(foodName) === false) {
-            this.setState({
-                foodEntries: [ ...foodEntries, foodName]
-            })
-        }
+    fetchFoodEntries = () => {
+        let entries = this.filterEntries();
+        console.log(entries)
+    }
+
+    filterEntries = () => {
+        let entries = Object.values(this.state).filter(value => value !== "")
+        return entries;
     }
 
     render() {
@@ -52,7 +52,7 @@ class ChooseFoodEntries extends Component {
                             onChange={this.changeItem} 
                         />
                         <br></br>
-                        <button>start scavenging!</button>
+                        <button onClick={this.fetchFoodEntries()}>start scavenging!</button>
                     </form>
                     <br></br>
                     in my area.
