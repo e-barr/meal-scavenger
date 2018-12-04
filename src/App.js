@@ -57,7 +57,6 @@ class App extends Component {
            </React.Fragment> : 
           <RequestCurrentLocation 
             setStartAddress={this.setStartAddress}
-            // showPlaceDetails={this.showPlaceDetails}
           />
           }
           {

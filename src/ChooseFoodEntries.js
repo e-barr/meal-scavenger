@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 class ChooseFoodEntries extends Component {
     state = {
-        // foodEntries: [],
         first: '',
         second: '',
         third: ''
