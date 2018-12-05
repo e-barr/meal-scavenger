@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import OneTile from './OneTile'
+import OneRestaurantTile from './OneRestaurantTile'
 const yelp_api_key = `${process.env.REACT_APP_YELP}`
 
 
 class FoodChoiceTile extends Component {
     state = {
-        topTenPicks: []
+        topTenPicks: [],
+        selected: {}
     }
     
     fetchInfo = () => {
@@ -20,20 +21,21 @@ class FoodChoiceTile extends Component {
             throw new TypeError("Oops, we haven't got JSON!");
         })
         .then(resp => { this.setState({ topTenPicks: resp.businesses }) })
-        .catch(function(error) { console.log(error); });
+        .catch(function(error) { console.log(error); }).then(console.log(`state is: ${this.state}`));
     }
 
     renderOneTiles = () => {
-        debugger;
-        let rendered = this.state.topTenPicks.map(pick => <OneTile />)
+        let rendered = this.state.topTenPicks.map(pick => <OneRestaurantTile key={pick.id} {...pick}/>)
         return rendered
     }
+
+    componentDidMount() {
+        this.fetchInfo()
+    }
     render() {
-        debugger;
         return (
-            <div onLoad={this.fetchInfo}>
+            <div>
                 {this.state.topTenPicks.length > 0 ? this.renderOneTiles(): 'Loading...' }
-                i am a food choice tile, item: {this.props.item}
             </div>
         )
     }
