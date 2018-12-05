@@ -13,16 +13,6 @@ class ChooseFoodEntries extends Component {
         })
     }
 
-    fetchFoodEntries = () => {
-        let entries = this.filterEntries();
-        console.log(entries)
-    }
-
-    filterEntries = () => {
-        let entries = Object.values(this.state).filter(value => value !== "")
-        return entries;
-    }
-
     render() {
         let { first, second, third } = { ...this.state }
         return (
@@ -51,7 +41,7 @@ class ChooseFoodEntries extends Component {
                             onChange={this.changeItem} 
                         />
                         <br></br>
-                        <button onClick={this.fetchFoodEntries()}>start scavenging!</button>
+                        <button>start scavenging!</button>
                     </form>
                     <br></br>
                     in my area.
