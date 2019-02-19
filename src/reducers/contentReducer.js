@@ -5,7 +5,7 @@ import {
 
 const defaultState = {
     isSettingAddress: true,
-    startAddress: '',
+    startAddress: null,
     startAddressId: null,
     startAddressPlaceId: null
 }

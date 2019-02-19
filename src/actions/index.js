@@ -1,12 +1,11 @@
 import {
-    SET_ADDRESS,
+    SET_START_ADDRESS,
     CLEAR_ALL
 } from './types'
 
-export const setAddress = ({ formatted_address, id, place_id }) => {
-    console.log('setAddress in actions entered')
+export const setStartAddress = ({ formatted_address, id, place_id }) => {
     return {
-        type: SET_ADDRESS,
+        type: SET_START_ADDRESS,
         payload: { formatted_address, id, place_id }
     }
 }
@@ -16,11 +15,3 @@ export const clearAll = () => {
         type: CLEAR_ALL
     }
 }
-
-// setStartAddress = ({ formatted_address, id, place_id }) => {
-//     this.setState({
-//       startAddress: formatted_address,
-//       startAddressId: id,
-//       startAddressPlaceId: place_id 
-//     })
-//   }

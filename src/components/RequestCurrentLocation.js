@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { setStartAddress } from '../actions'
+
 const google = window.google;
 
 const requestCurrentLocationStyling = {
@@ -22,7 +26,6 @@ class RequestCurrentLocation extends Component {
       super(props);
       this.autocompleteInput = React.createRef();
       this.autocomplete = null;
-      this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
     }
   
     componentDidMount() {
@@ -34,7 +37,7 @@ class RequestCurrentLocation extends Component {
       this.autocomplete.addListener("place_changed", this.handlePlaceChanged);
     }
   
-    handlePlaceChanged() {
+    handlePlaceChanged = () => {
       const place = this.autocomplete.getPlace();
       this.props.setStartAddress(place);
     }
@@ -57,5 +60,5 @@ class RequestCurrentLocation extends Component {
     }
   }
   
-  export default RequestCurrentLocation;
+  export default connect(null, { setStartAddress })(RequestCurrentLocation);
   

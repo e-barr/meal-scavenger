@@ -1,2 +1,2 @@
-export const SET_ADDRESS = 'SET_ADDRESS';
+export const SET_START_ADDRESS = 'SET_START_ADDRESS';
 export const CLEAR_ALL = 'CLEAR_ALL'
