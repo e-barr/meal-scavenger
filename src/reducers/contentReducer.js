@@ -1,5 +1,6 @@
 import {
-    SET_ADDRESS
+    SET_ADDRESS,
+    CLEAR_ALL
 } from '../actions'
 
 const defaultState = {
@@ -20,6 +21,8 @@ export default (state = defaultState, action) => {
                 startAddressId: action.id,
                 startAddressPlaceId: action.place_id
             }
+        case CLEAR_ALL:
+            return { ...defaultState }
         default:
             state;
     }
