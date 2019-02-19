@@ -1,6 +1,22 @@
 import React, { Component } from 'react'
 const google = window.google;
 
+const requestCurrentLocationStyling = {
+  margin: '10px 0 10px 10px',
+  borderRadius: '5px 0 0 5px',
+  border: '1px solid grey',
+  height: '15px',
+  width: '75%',
+  padding: '5px'
+}
+
+const buttonStyle = {
+  margin: '10px 10px 10px 0',
+  borderRadius: '0 5px 5px 0',
+  border: '1px solid grey',
+  padding: '5px'
+}
+
 class RequestCurrentLocation extends Component {
     constructor(props) {
       super(props);
@@ -31,8 +47,11 @@ class RequestCurrentLocation extends Component {
             id="autocomplete"
             placeholder="Enter your address"
             type="text"
+            style={requestCurrentLocationStyling}
             />
-            <button>choose my meals!</button>
+            <button
+              style={buttonStyle}
+            >choose my meals!</button>
         </div>
       );
     }
