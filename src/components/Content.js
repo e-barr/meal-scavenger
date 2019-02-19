@@ -2,12 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import RequestCurrentLocation from './RequestCurrentLocation'
+import ChooseFoodEntries from './ChooseFoodEntries'
+
+const addressStyle = {
+    margin: '10px'
+}
 
 const Content = (props) => {
     if (props.startAddress !== null) {
         return (
-            <div>
+            <div style={addressStyle}>
                 You have selected <strong>{props.startAddress.formatted_address}</strong> as your starting address
+                <ChooseFoodEntries />
             </div>
         )
     } else {

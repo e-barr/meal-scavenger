@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
+
 import FoodChoiceTile from './FoodChoiceTile'
-// const yelp_api_key = `${process.env.REACT_APP_YELP}`
+import { fetchInfo } from '../actions'
 
 class FoodChoiceTileContainer extends Component {
-    state = {
-        first: '',
-        second: '',
-        third: '',
-        selected: {}
-    }
+    // state = {
+    //     first: '',
+    //     second: '',
+    //     third: '',
+    //     selected: {}
+    // }
 
-    renderEntres = () => {
-        let allEntres = []
-        let entries = this.props.foodEntries
+    // renderEntres = () => {
+    //     let allEntres = []
+    //     let entries = this.props.foodEntries
 
-        entries.forEach(entry => allEntres.push(<FoodChoiceTile item={entry} key={entry} fetchInfo={this.fetchInfo}/>))
+    //     entries.forEach(entry => allEntres.push(<FoodChoiceTile item={entry} key={entry} fetchInfo={this.fetchInfo}/>))
 
-        return allEntres
-    }
+    //     return allEntres
+    // }
 
     // fetchInfo = (key, searchTerm) => {
     //     debugger;
@@ -41,7 +42,7 @@ class FoodChoiceTileContainer extends Component {
 
     render() {
         return (
-            <div>food choice container tile is me! and entres are: {this.renderEntres()}</div>
+            <div>food choice container tile is me!</div>
         )
     }
 }

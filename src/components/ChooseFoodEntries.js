@@ -1,53 +1,66 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
+
+const renderField = ({ input, type }) => {
+    console.log(input)
+    return (
+     <div>
+         <input
+            {...input} 
+            placeholder={input.name}
+         />
+     </div>   
+    )
+}
 
 class ChooseFoodEntries extends Component {
-    state = {
-        first: '',
-        second: '',
-        third: ''
-    }
+    renderForm = () => {
+        return (
+            <form
+                onSubmit={(formValues) => console.log(formValues)}
+            >
 
-    changeItem = event => {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
+                <Field 
+                    name="first food"
+                    component={renderField}
+                    type="text"
+                />
+
+                <Field 
+                    name="second food"
+                    component={renderField}
+                    type="text"
+                />
+
+                <Field 
+                    name="third food"
+                    component={renderField}
+                    type="text"
+                />
+
+                <button>start scavenging!</button>
+
+            </form>
+        )
     }
 
     render() {
-        let { first, second, third } = { ...this.state }
         return (
                 <div className="choose-food-entries">
-                    I want to search for the best (up to three items):
-                    <br></br>
-                    <form onSubmit={(event) => this.props.setFoodEntries(event, [first, second, third])}>
-                        <input 
-                            type="text"
-                            placeholder="food item"
-                            name="first"
-                            onChange={this.changeItem}
-                        />
-                        <br></br>
-                        <input
-                            type="text"
-                            placeholder="food item"
-                            name="second"
-                            onChange={this.changeItem} 
-                            />
-                        <br></br>
-                        <input
-                            type="text"
-                            placeholder="food item"
-                            name="third"
-                            onChange={this.changeItem} 
-                        />
-                        <br></br>
-                        <button>start scavenging!</button>
-                    </form>
-                    <br></br>
-                    in my area.
+                    What do you want the best of? (ex. curry, pizza, etc.)
+                    <br />
+                    Enter up to three choices below:
+                    <br />
+                    <br />
+                    {this.renderForm()}
                 </div>
         )
     }
 }
 
-export default ChooseFoodEntries
+const formWrapped = reduxForm({
+    form: 'pickThreeFoodsForm'
+})(ChooseFoodEntries)
+
+export default connect(null)(formWrapped);

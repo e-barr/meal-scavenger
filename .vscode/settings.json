@@ -1,0 +1,20 @@
+{
+    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.panel.defaultLocation": "right",
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 16,
+    "editor.wordWrap": "on",
+    "editor.codeLens": false,
+    "editor.minimap.renderCharacters": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 1,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "extensions.showRecommendationsOnlyOnDemand": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "workbench.tips.enabled": false
+}
