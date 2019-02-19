@@ -1,0 +1,2 @@
+export const SET_ADDRESS = 'SET_ADDRESS';
+// export const IS_SETTING_ADDRESS = 'IS_SETTING_ADDRESS'
