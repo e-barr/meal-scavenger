@@ -1,2 +1,3 @@
 export const SET_START_ADDRESS = 'SET_START_ADDRESS';
 export const CLEAR_ALL = 'CLEAR_ALL'
+export const SET_SELECTED_FOODS = 'SET_SELECTED_FOODS'

@@ -1,29 +1,33 @@
 import {
-    SET_ADDRESS,
-    CLEAR_ALL
-} from '../actions'
+    SET_START_ADDRESS,
+    CLEAR_ALL,
+    SET_SELECTED_FOODS
+} from '../actions/types'
 
 const defaultState = {
     isSettingAddress: true,
     startAddress: null,
-    startAddressId: null,
-    startAddressPlaceId: null
+    selectedFoods: []
 }
 
 export default (state = defaultState, action) => {
     switch(action.type) {
-        case SET_ADDRESS:
-            const isSettingAddress: !state.isSettingAddress
+        case SET_START_ADDRESS:
+            const startAddress = action.payload
+            const isSettingAddress = !state.isSettingAddress
             return {
                 ...state,
                 isSettingAddress,
-                startAddress: action.formatted_address,
-                startAddressId: action.id,
-                startAddressPlaceId: action.place_id
+                startAddress,
+            }
+        case SET_SELECTED_FOODS:
+            const selectedFoods = Object.values(action.payload)
+            return {
+                ...state, selectedFoods
             }
         case CLEAR_ALL:
             return { ...defaultState }
         default:
-            state;
+            return state;
     }
 }

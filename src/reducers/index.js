@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 
-import addressReducer from './addressReducer'
+import contentReducer from './contentReducer'
 
 export default combineReducers({
-    address: addressReducer,
+    content: contentReducer,
     form: formReducer
 })

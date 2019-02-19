@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 
+import { setSelectedFoods } from '../actions'
+
 const renderField = ({ input, type }) => {
     console.log(input)
     return (
@@ -15,10 +17,14 @@ const renderField = ({ input, type }) => {
 }
 
 class ChooseFoodEntries extends Component {
+    onSubmit = (formValues) => {
+        this.props.setSelectedFoods(formValues)
+    }
+
     renderForm = () => {
         return (
             <form
-                onSubmit={(formValues) => console.log(formValues)}
+                onSubmit={this.props.handleSubmit(this.onSubmit)}
             >
 
                 <Field 
@@ -63,4 +69,4 @@ const formWrapped = reduxForm({
     form: 'pickThreeFoodsForm'
 })(ChooseFoodEntries)
 
-export default connect(null)(formWrapped);
+export default connect(null, { setSelectedFoods })(formWrapped);

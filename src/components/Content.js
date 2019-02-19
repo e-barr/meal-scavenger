@@ -24,9 +24,9 @@ const Content = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    // debugger;
+    console.log(state)
     return {
-        startAddress: state.address.startAddress
+        startAddress: state.content.startAddress
     }
 }
 
