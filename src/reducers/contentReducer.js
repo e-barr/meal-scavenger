@@ -1,13 +1,15 @@
 import {
     SET_START_ADDRESS,
     CLEAR_ALL,
-    SET_SELECTED_FOODS
+    SET_SELECTED_FOODS,
+    ADD_TO_RESTAURANTS_OBJECT
 } from '../actions/types'
 
 const defaultState = {
     isSettingAddress: true,
     startAddress: null,
-    selectedFoods: []
+    selectedFoods: [],
+    restaurants: {}
 }
 
 export default (state = defaultState, action) => {
@@ -24,6 +26,11 @@ export default (state = defaultState, action) => {
             const selectedFoods = Object.values(action.payload)
             return {
                 ...state, selectedFoods
+            }
+        case ADD_TO_RESTAURANTS_OBJECT:
+            console.log(action.payload)
+            return {
+                ...state
             }
         case CLEAR_ALL:
             return { ...defaultState }

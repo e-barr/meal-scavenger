@@ -5,7 +5,6 @@ import { Field, reduxForm } from 'redux-form'
 import { setSelectedFoods } from '../actions'
 
 const renderField = ({ input, type }) => {
-    console.log(input)
     return (
      <div>
          <input

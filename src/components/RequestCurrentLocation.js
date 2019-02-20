@@ -18,7 +18,7 @@ const buttonStyle = {
   margin: '10px 10px 10px 0',
   borderRadius: '0 5px 5px 0',
   border: '1px solid grey',
-  padding: '5px'
+  padding: '5.5px'
 }
 
 class RequestCurrentLocation extends Component {

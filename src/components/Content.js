@@ -24,7 +24,6 @@ const Content = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         startAddress: state.content.startAddress
     }
