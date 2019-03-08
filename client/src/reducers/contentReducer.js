@@ -35,9 +35,13 @@ export default (state = defaultState, action) => {
                 restaurants
             }
         case ADD_ONE_FOOD_RESTAURANT:
-            const updatedRestaurants = [...state.restaurants, action.payload]
+            // const updatedRestaurants = [...state.restaurants, action.payload]
+            console.log(action.payload)
+            // return {
+            //     ...state, updatedRestaurants
+            // }
             return {
-                ...state, updatedRestaurants
+                ...state
             }
         case CLEAR_ALL:
             return { ...defaultState }

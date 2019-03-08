@@ -17,9 +17,11 @@ const renderField = ({ input, type }) => {
 
 class ChooseFoodEntries extends Component {
     onSubmit = (formValues) => {
+        const zipCode = this.props.zipCode
         const food = Object.values(formValues)
+        debugger;
         this.props.setSelectedFoods(formValues)
-        this.props.fetchAndAddRestaurants(food, this.props.zipCode)
+        this.props.fetchAndAddRestaurants(food, zipCode)
     }
 
     renderForm = () => {
@@ -72,7 +74,7 @@ const formWrapped = reduxForm({
 
 const mapStateToProps = (state) => {
     return {
-        zipCode: state.content.zipCode
+        zipCode: state.content.startAddress.zipCode
     }
 }
 

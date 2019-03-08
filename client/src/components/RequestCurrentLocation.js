@@ -6,7 +6,7 @@ import { setStartAddress } from '../actions'
 const google = window.google;
 
 const requestCurrentLocationStyling = {
-  margin: '10px 10px 10px 5%',
+  margin: '10px 5% 10px 5%',
   borderRadius: '5px',
   border: '1px solid grey',
   height: '15px',
@@ -45,9 +45,6 @@ class RequestCurrentLocation extends Component {
             type="text"
             style={requestCurrentLocationStyling}
             />
-            {/* <button
-              style={buttonStyle}
-            >choose my meals!</button> */}
         </div>
       );
     }
