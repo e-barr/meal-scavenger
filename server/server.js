@@ -1,6 +1,7 @@
 const axios = require('axios')
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -10,6 +11,7 @@ const configuredAxios = axios.create({
 
 
 app.use(bodyParser.json());
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const getRestaurantInfo = async (req, res) => {
@@ -20,7 +22,7 @@ const getRestaurantInfo = async (req, res) => {
         const result = await configuredAxios.get(`/search?term=${term}&location=${zip}&limit=10&sort_by=rating`)
         res.send({ restaurants: result.data.businesses })
     } catch (error) {
-        res.send({ error })
+        res.send({ 'error': error.message })
     }
 }
 

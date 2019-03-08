@@ -19,7 +19,6 @@ class ChooseFoodEntries extends Component {
     onSubmit = (formValues) => {
         const zipCode = this.props.zipCode
         const food = Object.values(formValues)
-        debugger;
         this.props.setSelectedFoods(formValues)
         this.props.fetchAndAddRestaurants(food, zipCode)
     }

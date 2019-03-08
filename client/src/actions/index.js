@@ -1,8 +1,8 @@
+import axios from 'axios'
 import {
     SET_START_ADDRESS,
     CLEAR_ALL,
     SET_SELECTED_FOODS,
-    SET_ALL_RESTAURANTS,
     ADD_ONE_FOOD_RESTAURANT
 } from './types'
 
@@ -32,25 +32,29 @@ export const setSelectedFoods = (payload) => {
 
 export const fetchAndAddRestaurants = (listOfRestaurants, zipCode) => dispatch => {
 
-    debugger;
+    let res
+    console.log('entered')
     listOfRestaurants.forEach((searchTerm, idx) => {
-        console.log('enetereds')
+        console.log('hi')
         let body = {
-            "term": searchTerm,
-            "key": yelp_api_key,
-            idx,
-            "zip": zipCode
+            "term": `${searchTerm}`,
+            "key": `${yelp_api_key}`,
+            "zip": `${zipCode}`
         }
-
-        fetch('http://localhost:5000/api/', {
-            method: 'GET',
-            body
-        }).then(res => {
+        
+        console.log(`searchTerm: ${searchTerm}, idx: ${idx}`)
+        try {
+            axios.get('http://localhost:5000/api/', { ...body }).then(resp => res = resp)
+            debugger;
+            
+            // console.log(res)
             dispatch({
                 type: ADD_ONE_FOOD_RESTAURANT,
                 payload: { [idx]: res.data.businesses }
             })
-        })
+        } catch (error) {
+            console.log(`error: ${error}`)
+        }
     })
 
 }

@@ -4,11 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "cors": "^2.8.5",
     "googleplaces": "^0.6.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
-    "react-scripts": "^2.1.5",
+    "react-scripts": "^2.1.8",
     "redux": "^4.0.1",
     "redux-form": "^8.1.0",
     "redux-thunk": "^2.3.0"
