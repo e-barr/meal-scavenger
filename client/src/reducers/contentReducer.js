@@ -39,7 +39,6 @@ export default (state = defaultState, action) => {
             const key = Object.keys(action.payload)[0]
             const value = action.payload[key]
             currentRestaurants[key] = value
-            debugger;
             return {
                 ...state,
                 restaurants: currentRestaurants
