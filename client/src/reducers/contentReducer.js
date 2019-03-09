@@ -3,7 +3,8 @@ import {
     CLEAR_ALL,
     SET_SELECTED_FOODS,
     SET_ALL_RESTAURANTS,
-    ADD_ONE_FOOD_RESTAURANT
+    ADD_ONE_FOOD_RESTAURANT,
+    NO_CHANGE
 } from '../actions/types'
 
 const defaultState = {
@@ -35,14 +36,18 @@ export default (state = defaultState, action) => {
                 restaurants
             }
         case ADD_ONE_FOOD_RESTAURANT:
-            // const updatedRestaurants = [...state.restaurants, action.payload]
             console.log(action.payload)
-            // return {
-            //     ...state, updatedRestaurants
-            // }
+            const currentRestaurants = state.restaurants
+            const key = Object.keys(action.payload)[0]
+            const value = action.payload[key]
+            currentRestaurants[key] = value
+            console.log(`currentRestaurants:`)
+            console.log(currentRestaurants)
             return {
-                ...state
+                ...state, restaurants: currentRestaurants
             }
+        case NO_CHANGE:
+            return state
         case CLEAR_ALL:
             return { ...defaultState }
         default:

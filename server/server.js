@@ -20,13 +20,13 @@ const getRestaurantInfo = async (req, res) => {
 
     try {
         const result = await configuredAxios.get(`/search?term=${term}&location=${zip}&limit=10&sort_by=rating`)
-        res.send({ restaurants: result.data.businesses })
+        res.send({ "restaurants": result.data.businesses })
     } catch (error) {
         res.send({ 'error': error.message })
     }
 }
 
-app.get('/api/', getRestaurantInfo);
+app.post('/api/', getRestaurantInfo);
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
