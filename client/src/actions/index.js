@@ -4,7 +4,6 @@ import {
     CLEAR_ALL,
     SET_SELECTED_FOODS,
     ADD_ONE_FOOD_RESTAURANT,
-    NO_CHANGE
 } from './types'
 
 const yelp_api_key = `${process.env.REACT_APP_YELP}`

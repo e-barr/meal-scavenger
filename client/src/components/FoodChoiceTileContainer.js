@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import FoodChoiceTile from './FoodChoiceTile'
-import { fetchInfo } from '../actions'
+// import FoodChoiceTile from './FoodChoiceTile'
+// import { fetchInfo } from '../actions'
 
 class FoodChoiceTileContainer extends Component {
     // state = {
