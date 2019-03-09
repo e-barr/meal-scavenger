@@ -1,50 +1,34 @@
-// import React, { Component } from 'react'
 import React from 'react'
-// import OneRestaurantTile from './OneRestaurantTile'
-// const yelp_api_key = `${process.env.REACT_APP_YELP}`
 
+const tileStyle = {
+    margin: '10px'
+}
 
-// class FoodChoiceTile extends Component {
-//     state = {
-//         topTenPicks: [],
-//         selected: {}
-//     }
-    
-//     fetchInfo = () => {
-//         fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${this.props.item}&location=77002&limit=10&sort_by=rating`, {
-//         method: 'GET',
-//         headers: {  Authorization: `Bearer ${yelp_api_key}` }
-//         }).then(resp => {
-//             const contentType = resp.headers.get("content-type");
-//             if(contentType && contentType.includes("application/json")) {
-//                 return resp.json();
-//             }
-//             throw new TypeError("Oops, we haven't got JSON!");
-//         })
-//         .then(resp => { this.setState({ topTenPicks: resp.businesses }) })
-//         .catch(function(error) { console.log(error); }).then(console.log(`state is: ${this.state}`));
-//     }
-
-//     renderOneTiles = () => {
-//         let rendered = this.state.topTenPicks.map(pick => <OneRestaurantTile key={pick.id} {...pick}/>)
-//         return rendered
-//     }
-
-//     componentDidMount() {
-//         this.fetchInfo()
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 {this.state.topTenPicks.length > 0 ? this.renderOneTiles(): 'Loading...' }
-//             </div>
-//         )
-//     }
-// }
-
-const FoodChoiceTile = () => {
+const FoodChoiceTile = (props) => {
+    const { 
+        coordinates, 
+        display_phone,
+        id,
+        image_url,
+        location,
+        name,
+        phone,
+        price,
+        rating,
+        review_count,
+        url
+    } = props
+    console.log(props)
     return (
-        <div>FoodChoiceTile</div>
+        <div style={tileStyle}>
+            <h3><a href={url}>{name}</a></h3>
+            <h4>{display_phone}</h4>
+            <h4>{location.display_address.join(" ")}</h4>
+            <h4>{rating}</h4>
+            <h4>{price}</h4>
+            <h4>{review_count}</h4>
+            <img src={image_url} style={{height: '180px', width: '240px'}} />
+        </div>
     )
 }
 

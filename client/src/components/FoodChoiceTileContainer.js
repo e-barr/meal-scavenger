@@ -3,22 +3,35 @@ import { connect } from 'react-redux'
 
 import FoodChoiceTile from './FoodChoiceTile'
 
+const containerStyle = {
+    margin: '10px'
+}
+
 
 class FoodChoiceTileContainer extends Component {
+    renderTiles = (restaurants) => {
+        let total = []
+
+        for (let key in restaurants) {
+            let list = restaurants[key]
+            let returned = list.map(rest => {
+                return <FoodChoiceTile {...rest} key={rest.id} />
+            })
+            total.push(returned)
+        }
+
+        return total
+    }
+
     render() {
         const restaurantsLength = Object.keys(this.props.restaurants).length
-        console.log(`restaurantsLength is: ${restaurantsLength}`)
-        if (restaurantsLength > 0) {
-            return (
-                <div>
-                    <FoodChoiceTile />
-                </div>
-            )
-        } else {
-            return (
-                <div>food choice container tile is me!</div>
-            )
-        }
+        let returned
+        restaurantsLength > 0 ? returned = this.renderTiles(this.props.restaurants) : returned = <div>loading...</div>
+        return (
+            <div style={containerStyle}>
+                {returned}
+            </div>
+        )
     }
 }
 
