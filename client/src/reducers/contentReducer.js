@@ -36,13 +36,10 @@ export default (state = defaultState, action) => {
                 restaurants
             }
         case ADD_ONE_FOOD_RESTAURANT:
-            console.log(action.payload)
             const currentRestaurants = state.restaurants
             const key = Object.keys(action.payload)[0]
             const value = action.payload[key]
             currentRestaurants[key] = value
-            console.log(`currentRestaurants:`)
-            console.log(currentRestaurants)
             return {
                 ...state, restaurants: currentRestaurants
             }

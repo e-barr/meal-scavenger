@@ -49,21 +49,9 @@ export const fetchAndAddRestaurants = (listOfRestaurants, zipCode) => dispatch =
                     type: ADD_ONE_FOOD_RESTAURANT,
                     payload: { [idx]: res }
                 })
-                // console.log('res is:')
-                // console.log(res)
             })
             .catch(err => res["err"] = err)
-            
-            // if (!res['err']) {
-            //     dispatch({
-            //         type: ADD_ONE_FOOD_RESTAURANT,
-            //         payload: { [idx]: res }
-            //     })
-            // }
         } catch (error) {
-            // dispatch({
-            //     type: NO_CHANGE
-            // })
         }
     })
 
