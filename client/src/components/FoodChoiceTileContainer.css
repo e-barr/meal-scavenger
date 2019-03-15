@@ -1,0 +1,14 @@
+.one-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.one {
+    flex: 0 0 auto;
+    max-height: 20%;
+}
+
+.one h2 a {
+    text-decoration: none;
+}

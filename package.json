@@ -1,5 +1,5 @@
 {
-  "name": "meal scavenger",
+  "name": "meal-scavenger",
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && npm run start",

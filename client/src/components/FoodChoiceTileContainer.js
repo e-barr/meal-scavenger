@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import FoodChoiceTile from './FoodChoiceTile'
+import './FoodChoiceTileContainer.css'
 
 const containerStyle = {
     margin: '10px'
@@ -15,8 +16,9 @@ class FoodChoiceTileContainer extends Component {
         for (let key in restaurants) {
             let list = restaurants[key]
             let returned = list.map(rest => {
-                return <FoodChoiceTile {...rest} key={rest.id} />
+                return <FoodChoiceTile {...rest} key={rest.id} className="one"/>
             })
+            returned = <div className="one-container">{returned}</div>
             total.push(returned)
         }
 

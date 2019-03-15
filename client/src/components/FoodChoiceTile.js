@@ -1,4 +1,5 @@
 import React from 'react'
+import './FoodChoiceTileContainer.css'
 
 const tileStyle = {
     margin: '10px'
@@ -21,12 +22,17 @@ const FoodChoiceTile = (props) => {
     console.log(props)
     return (
         <div style={tileStyle}>
-            <h3><a href={url}>{name}</a></h3>
-            <h4>{display_phone}</h4>
-            <h4>{location.display_address.join(" ")}</h4>
-            <h4>{rating}</h4>
-            <h4>{price}</h4>
-            <h4>{review_count}</h4>
+            <h2><a href={url} target="_blank">{name}</a></h2>
+            <p>
+                rating: {rating}<br></br>
+                price: {price}<br></br>
+                # of reviews: {review_count}<br></br>
+
+                <p>
+                    call at: {display_phone}<br></br>
+                    address: {location.display_address.join(" ")}<br></br>
+                </p>
+            </p>
             <img src={image_url} style={{height: '180px', width: '240px'}} />
         </div>
     )
