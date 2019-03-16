@@ -9,6 +9,23 @@
     max-height: 20%;
 }
 
-.one h2 a {
+a {
     text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: brown;
+}
+
+.select-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 4% 37.5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
 }

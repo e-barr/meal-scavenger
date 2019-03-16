@@ -30,9 +30,11 @@ class FoodChoiceTileContainer extends Component {
         let returned
         restaurantsLength > 0 ? returned = this.renderTiles(this.props.restaurants) : returned = <div>loading...</div>
         return (
-            <div style={containerStyle}>
+            <React.Fragment>
                 {returned}
-            </div>
+            </React.Fragment>
+            // <div style={containerStyle}>
+            // </div>
         )
     }
 }
