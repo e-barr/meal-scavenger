@@ -29,7 +29,7 @@ const FoodChoiceTile = (props) => {
                 # of reviews: <strong>{review_count}</strong><br></br>
 
                 <p>
-                    {display_phone ? `call at: <strong><a href={tel:+1${display_phone}}>{display_phone}</a></strong><br></br>` : null}
+                    call at: <strong><a href={`tel:+1${display_phone}`}>{display_phone}</a></strong><br></br>
                     address: <strong>{location.display_address.join(" ")}</strong><br></br>
                 </p>
 
