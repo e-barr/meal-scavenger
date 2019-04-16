@@ -3,7 +3,8 @@ import {
     CLEAR_ALL,
     SET_SELECTED_FOODS,
     SET_ALL_RESTAURANTS,
-    ADD_ONE_FOOD_RESTAURANT
+    ADD_ONE_FOOD_RESTAURANT,
+    ONE_RESTAURANT_SELECTED
 } from '../actions/types'
 
 const defaultState = {
@@ -45,6 +46,10 @@ export default (state = defaultState, action) => {
             }
         case CLEAR_ALL:
             return { ...defaultState }
+        case ONE_RESTAURANT_SELECTED:
+            debugger;
+            console.log('action.payload is:', action.payload)
+            return {... state}
         default:
             return state;
     }

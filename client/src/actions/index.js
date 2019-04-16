@@ -4,6 +4,7 @@ import {
     CLEAR_ALL,
     SET_SELECTED_FOODS,
     ADD_ONE_FOOD_RESTAURANT,
+    ONE_RESTAURANT_SELECTED
 } from './types'
 
 const yelp_api_key = `${process.env.REACT_APP_YELP}`
@@ -54,4 +55,11 @@ export const fetchAndAddRestaurants = (listOfRestaurants, zipCode) => dispatch =
         }
     })
 
+}
+
+export const oneRestaurantSelected = (payload) => {
+    return {
+        type: ONE_RESTAURANT_SELECTED,
+        payload
+    }
 }
