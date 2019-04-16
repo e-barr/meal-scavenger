@@ -1,5 +1,6 @@
 import React from 'react'
-import './FoodChoiceTileContainer.css'
+// import './FoodChoiceTileContainer.css'
+import './FoodChoiceTile.css'
 
 const tileStyle = {
     margin: '10px'
@@ -26,7 +27,7 @@ const FoodChoiceTile = (props) => {
             <div>
 
             <h4><a href={url} target="_blank" rel="noopener noreferrer" >{name}</a></h4>
-            <p style={{ padding: '15px' }}>
+            <div style={{ padding: '15px' }}>
                 rating: <strong>{rating}</strong><br></br>
                 price: <strong>{price}</strong><br></br>
                 # of reviews: <strong>{review_count}</strong><br></br>
@@ -42,7 +43,7 @@ const FoodChoiceTile = (props) => {
                     SELECT
                 </button>
 
-            </p>
+            </div>
             </div>
         </div>
     )

@@ -5,7 +5,7 @@
     max-width: 98%;
 }
 
-.one {
+/* .one {
     border: 1px solid #d3d3d3;
     border-radius: .25rem;
 }
@@ -20,7 +20,7 @@
     background-size: cover;
     background-position: center;
     background-color: #ccc;
-}
+} */
 
 a {
     text-decoration: none;
@@ -31,7 +31,7 @@ a:hover {
     color: brown;
 }
 
-.select-button {
+/* .select-button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -41,7 +41,11 @@ a:hover {
     display: inline-block;
     font-size: 16px;
     font-weight: bold;
-}
+} */
+
+/* button:hover {
+    cursor: pointer;
+} */
 
 .restaurants-selected-button {
     background-color: rgb(223, 63, 63);

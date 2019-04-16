@@ -1,0 +1,32 @@
+.select-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 4% 40%;
+    text-align: center;
+    /* text-decoration: none; */
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.one {
+    border: 1px solid #d3d3d3;
+    border-radius: .25rem;
+}
+
+.one h4 {
+    margin-left: 5px;
+}
+
+.one-img {
+    height: 200px;
+    width: 300px;
+    background-size: cover;
+    background-position: center;
+    background-color: #ccc;
+}

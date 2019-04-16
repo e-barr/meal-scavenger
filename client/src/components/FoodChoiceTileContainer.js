@@ -8,13 +8,14 @@ import './FoodChoiceTileContainer.css'
 class FoodChoiceTileContainer extends Component {
     renderTiles = (restaurants) => {
         let total = []
+        let foodChoices = Object.values(this.props.selectedFoods)
 
         for (let key in restaurants) {
             let list = restaurants[key]
             let returned = list.map(rest => {
                 return <FoodChoiceTile {...rest} key={rest.id}/>
             })
-            returned = <div className="one-container">{returned}</div>
+            returned = <div key={foodChoices[key]} className="one-container">{returned}</div>
             total.push(returned)
         }
 
@@ -36,7 +37,8 @@ class FoodChoiceTileContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        restaurants: state.content.restaurants
+        restaurants: state.content.restaurants,
+        selectedFoods: state.content.selectedFoods
     }
 }
 

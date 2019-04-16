@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 
 import { setSelectedFoods, fetchAndAddRestaurants } from '../actions'
 
-const renderField = ({ input, type }) => {
+const renderField = ({ input }) => {
     return (
      <div>
          <input
