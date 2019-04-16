@@ -12,10 +12,11 @@ class FoodChoiceTileContainer extends Component {
 
         for (let key in restaurants) {
             let list = restaurants[key]
+            let foodKey = foodChoices[key]
             let returned = list.map(rest => {
-                return <FoodChoiceTile {...rest} key={rest.id}/>
+                return <FoodChoiceTile {...rest} foodKey={foodKey} key={rest.id}/>
             })
-            returned = <div key={foodChoices[key]} className="one-container">{returned}</div>
+            returned = <div key={foodKey} className="one-container">{returned}</div>
             total.push(returned)
         }
 
