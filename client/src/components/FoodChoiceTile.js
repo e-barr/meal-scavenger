@@ -22,10 +22,10 @@ const FoodChoiceTile = (props) => {
     console.log(props)
     return (
         <div style={tileStyle} className="one">
-            <img src={image_url} className="one-img" />
+            <img src={image_url} className="one-img" alt={name}/>
             <div>
 
-            <h4><a href={url} target="_blank">{name}</a></h4>
+            <h4><a href={url} target="_blank" rel="noopener noreferrer" >{name}</a></h4>
             <p style={{ padding: '15px' }}>
                 rating: <strong>{rating}</strong><br></br>
                 price: <strong>{price}</strong><br></br>
@@ -35,11 +35,15 @@ const FoodChoiceTile = (props) => {
                     call at: <strong><a href={`tel:+1${display_phone}`}>{display_phone}</a></strong><br></br>
                     address: <strong>{location.display_address.join(" ")}</strong><br></br>
                 </p>
-                <button className="select-button">SELECT</button>
+                <button
+                    className="select-button"
+                    onClick={() => console.log(`selected ${name}!`)}
+                >
+                    SELECT
+                </button>
 
             </p>
             </div>
-            {/* <img src={image_url} style={{height: '180px', width: '240px'}} className="one-img" /> */}
         </div>
     )
 }

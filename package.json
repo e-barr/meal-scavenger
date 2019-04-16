@@ -1,11 +1,6 @@
 {
   "name": "meal-scavenger",
   "version": "1.0.0",
-  "scripts": {
-    "client": "cd client && npm run start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
-  },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
