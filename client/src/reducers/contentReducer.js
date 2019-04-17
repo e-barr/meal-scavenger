@@ -48,9 +48,9 @@ export default (state = defaultState, action) => {
         case CLEAR_ALL:
             return { ...defaultState }
         case ONE_RESTAURANT_SELECTED:
-            let key, restaurant = action.payload
-            let updatedSelectedRestaurants = { ...state.selectedRestaurants, [key]:restaurant }
-            return {... state, selectedRestaurants: updatedSelectedRestaurants}
+            let { foodKey, restaurantInfo } = action.payload
+            let updatedSelectedRestaurants = { ...state.selectedRestaurants, [foodKey]:restaurantInfo }
+            return { ... state, selectedRestaurants: updatedSelectedRestaurants }
         default:
             return state;
     }

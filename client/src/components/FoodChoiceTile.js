@@ -10,6 +10,8 @@ const tileStyle = {
 class FoodChoiceTile extends Component {
     render() {
         const foodKey = this.props.foodKey
+        const restaurantInfo = this.props.restaurantInfo
+        const selectedRestaurants = this.props.selectedRestaurants
 
         const {
             display_phone,
@@ -19,10 +21,22 @@ class FoodChoiceTile extends Component {
             price,
             rating,
             review_count,
-            url
-        } = this.props.restaurantInfo
+            url,
+            id
+        } = restaurantInfo
 
-        console.log(this.props.restaurantInfo)
+        const selectedIds = []
+
+        for (let key in selectedRestaurants)  {
+            let id = selectedRestaurants[key].id
+            console.log('ths was entered')
+            debugger;
+            selectedIds.push(id)
+        }
+
+        console.log(selectedIds)
+
+        const buttonColor = selectedIds.includes(id) ? { backgroundColor: 'green' } : { backgroundColor: 'rgb(223, 63, 63)' }
 
         return (
             <div style={tileStyle} className="one">
@@ -41,7 +55,8 @@ class FoodChoiceTile extends Component {
                     </p>
                     <button
                         className="select-button"
-                        onClick={() => console.log(`selected ${name}, foodKey is: ${foodKey}!`)}
+                        style={ buttonColor }
+                        onClick={() => this.props.oneRestaurantSelected({ foodKey, restaurantInfo })}
                     >
                         SELECT
                     </button>
@@ -54,4 +69,10 @@ class FoodChoiceTile extends Component {
  
 }
 
-export default connect(null, { oneRestaurantSelected })(FoodChoiceTile)
+const mapStateToProps = (state) => {
+    return {
+        selectedRestaurants: state.content.selectedRestaurants
+    }
+}
+
+export default connect(mapStateToProps, { oneRestaurantSelected })(FoodChoiceTile)
