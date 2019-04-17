@@ -1,5 +1,6 @@
 import React from 'react'
 import RestaurantDisplayTile from './RestaurantDisplayTile'
+import './FoodChoiceTileContainer.css'
 
 const SelectedFoodsDisplay = ({ selectedRestaurants }) => {
     let length = Object.keys(selectedRestaurants).length
@@ -13,7 +14,7 @@ const SelectedFoodsDisplay = ({ selectedRestaurants }) => {
             mapped.push(<RestaurantDisplayTile {...restaurant} />)
         }
         return (
-            <div style={{ backgroundColor : 'yellow'}}>
+            <div className="one-container">
                 {mapped}
             </div>
         )
