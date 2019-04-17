@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import './FoodChoiceTile.css'
+import { oneRestaurantSelected } from '../actions'
 
 const tileStyle = {
     margin: '10px'
@@ -7,7 +9,9 @@ const tileStyle = {
 
 class FoodChoiceTile extends Component {
     render() {
-        const { 
+        const foodKey = this.props.foodKey
+
+        const {
             display_phone,
             image_url,
             location,
@@ -15,9 +19,10 @@ class FoodChoiceTile extends Component {
             price,
             rating,
             review_count,
-            url,
-            foodKey
-        } = this.props
+            url
+        } = this.props.restaurantInfo
+
+        console.log(this.props.restaurantInfo)
 
         return (
             <div style={tileStyle} className="one">
@@ -36,7 +41,7 @@ class FoodChoiceTile extends Component {
                     </p>
                     <button
                         className="select-button"
-                        onClick={(props) => console.log(`selected ${name}, foodKey is: ${foodKey}!`)}
+                        onClick={() => console.log(`selected ${name}, foodKey is: ${foodKey}!`)}
                     >
                         SELECT
                     </button>
@@ -49,4 +54,4 @@ class FoodChoiceTile extends Component {
  
 }
 
-export default FoodChoiceTile
+export default connect(null, { oneRestaurantSelected })(FoodChoiceTile)

@@ -14,7 +14,7 @@ class FoodChoiceTileContainer extends Component {
             let list = restaurants[key]
             let foodKey = foodChoices[key]
             let returned = list.map(rest => {
-                return <FoodChoiceTile {...rest} foodKey={foodKey} key={rest.id}/>
+                return <FoodChoiceTile restaurantInfo={rest} foodKey={foodKey} key={rest.id}/>
             })
             returned = <div key={foodKey} className="one-container">{returned}</div>
             total.push(returned)

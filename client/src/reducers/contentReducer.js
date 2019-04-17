@@ -11,7 +11,8 @@ const defaultState = {
     isSettingAddress: true,
     startAddress: null,
     selectedFoods: [],
-    restaurants: {}
+    restaurants: {},
+    selectedRestaurants: []
 }
 
 export default (state = defaultState, action) => {

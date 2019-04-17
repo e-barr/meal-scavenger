@@ -35,4 +35,4 @@ class Header extends Component {
     }
 }
 
-export default connect(null, { clearAll})(Header);
+export default connect(null, { clearAll })(Header);

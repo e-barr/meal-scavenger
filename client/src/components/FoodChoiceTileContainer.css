@@ -5,23 +5,6 @@
     max-width: 98%;
 }
 
-/* .one {
-    border: 1px solid #d3d3d3;
-    border-radius: .25rem;
-}
-
-.one h4 {
-    margin-left: 5px;
-}
-
-.one-img {
-    height: 200px;
-    width: 300px;
-    background-size: cover;
-    background-position: center;
-    background-color: #ccc;
-} */
-
 a {
     text-decoration: none;
     color: black;
@@ -31,22 +14,6 @@ a:hover {
     color: brown;
 }
 
-/* .select-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 4% 40%;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-} */
-
-/* button:hover {
-    cursor: pointer;
-} */
-
 .restaurants-selected-button {
     background-color: rgb(223, 63, 63);
     border: none;
@@ -55,7 +22,6 @@ a:hover {
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
-    /* margin: 5px 5px 0 5px; */
     margin: 5px 0 5px 0;
     width: 110%;
 }
