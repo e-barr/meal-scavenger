@@ -29,14 +29,10 @@ class FoodChoiceTile extends Component {
 
         for (let key in selectedRestaurants)  {
             let id = selectedRestaurants[key].id
-            console.log('ths was entered')
-            debugger;
             selectedIds.push(id)
         }
 
-        console.log(selectedIds)
-
-        const buttonColor = selectedIds.includes(id) ? { backgroundColor: 'green' } : { backgroundColor: 'rgb(223, 63, 63)' }
+        const buttonColor = selectedIds.includes(id) ? { backgroundColor: '#111' } : { backgroundColor: 'rgb(223, 63, 63)' }
 
         return (
             <div style={tileStyle} className="one">

@@ -50,7 +50,7 @@ export default (state = defaultState, action) => {
         case ONE_RESTAURANT_SELECTED:
             let { foodKey, restaurantInfo } = action.payload
             let updatedSelectedRestaurants = { ...state.selectedRestaurants, [foodKey]:restaurantInfo }
-            return { ... state, selectedRestaurants: updatedSelectedRestaurants }
+            return { ...state, selectedRestaurants: updatedSelectedRestaurants }
         default:
             return state;
     }
