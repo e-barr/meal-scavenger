@@ -32,7 +32,7 @@ class FoodChoiceTile extends Component {
             selectedIds.push(id)
         }
 
-        const buttonColor = selectedIds.includes(id) ? { backgroundColor: '#111' } : { backgroundColor: 'rgb(223, 63, 63)' }
+        const buttonColor = selectedIds.includes(id) ? { } : { backgroundColor: 'rgb(223, 63, 63)' }
 
         return (
             <div style={tileStyle} className="one">
