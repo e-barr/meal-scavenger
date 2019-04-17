@@ -12,7 +12,7 @@ const defaultState = {
     startAddress: null,
     selectedFoods: [],
     restaurants: {},
-    selectedRestaurants: []
+    selectedRestaurants: {}
 }
 
 export default (state = defaultState, action) => {
@@ -48,9 +48,9 @@ export default (state = defaultState, action) => {
         case CLEAR_ALL:
             return { ...defaultState }
         case ONE_RESTAURANT_SELECTED:
-            debugger;
-            console.log('action.payload is:', action.payload)
-            return {... state}
+            let key, restaurant = action.payload
+            let updatedSelectedRestaurants = { ...state.selectedRestaurants, [key]:restaurant }
+            return {... state, selectedRestaurants: updatedSelectedRestaurants}
         default:
             return state;
     }
