@@ -39,7 +39,8 @@ class FoodChoiceTileContainer extends Component {
 const mapStateToProps = (state) => {
     return {
         restaurants: state.content.restaurants,
-        selectedFoods: state.content.selectedFoods
+        selectedFoods: state.content.selectedFoods,
+        startAddress: state.content.startAddress
     }
 }
 
