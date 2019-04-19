@@ -33,6 +33,7 @@ class FoodChoiceTile extends Component {
         }
 
         const buttonColor = selectedIds.includes(id) ? { } : { backgroundColor: 'rgb(223, 63, 63)' }
+        const buttonText = selectedIds.includes(id) ? 'SELECTED' : 'SELECT'
 
         return (
             <div style={tileStyle} className="one">
@@ -54,7 +55,7 @@ class FoodChoiceTile extends Component {
                         style={ buttonColor }
                         onClick={() => this.props.oneRestaurantSelected({ foodKey, restaurantInfo })}
                     >
-                        SELECT
+                        {buttonText}
                     </button>
     
                 </div>

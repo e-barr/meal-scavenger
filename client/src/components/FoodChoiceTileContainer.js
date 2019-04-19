@@ -24,8 +24,7 @@ class FoodChoiceTileContainer extends Component {
     }
 
     render() {
-        const restaurants = this.props.restaurants
-        const startAddress = this.props.startAddress
+        const { restaurants, startAddress, selectedFoods } = this.props
         const restaurantsLength = Object.keys(restaurants).length
         let returned
         restaurantsLength > 0 ? returned = this.renderTiles(restaurants) : returned = <div>loading...</div>
@@ -33,12 +32,13 @@ class FoodChoiceTileContainer extends Component {
         const origin = chartMyPathUrl[0]
         const waypoints = chartMyPathUrl[1].slice(0, chartMyPathUrl[1].length - 1)
         const endpoint = chartMyPathUrl[1].slice(chartMyPathUrl.length - 1)
+        const hrefUrl = Object.keys(selectedFoods).length > 0 ? `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${endpoint}&waypoints=${waypoints}` : '#'
         return (
             <React.Fragment>
                     <button className="restaurants-selected-button"
                     >
                         <a
-                            href={`https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${endpoint}&waypoints=${waypoints}`}
+                            href={hrefUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -59,6 +59,7 @@ class FoodChoiceTileContainer extends Component {
         }
 
         restaurantPoints = restaurantPoints.map(restaurantPoint => encodeURIComponent(restaurantPoint)).join("&")
+        debugger;
 
         return [startPoint, restaurantPoints]
     }
