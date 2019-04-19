@@ -24,15 +24,43 @@ class FoodChoiceTileContainer extends Component {
     }
 
     render() {
-        const restaurantsLength = Object.keys(this.props.restaurants).length
+        const restaurants = this.props.restaurants
+        const startAddress = this.props.startAddress
+        const restaurantsLength = Object.keys(restaurants).length
         let returned
-        restaurantsLength > 0 ? returned = this.renderTiles(this.props.restaurants) : returned = <div>loading...</div>
+        restaurantsLength > 0 ? returned = this.renderTiles(restaurants) : returned = <div>loading...</div>
+        const chartMyPathUrl = this.generateMyPathUrl(startAddress, restaurants)
+        const origin = chartMyPathUrl[0]
+        const waypoints = chartMyPathUrl[1].slice(0, chartMyPathUrl[1].length - 1)
+        const endpoint = chartMyPathUrl[1].slice(chartMyPathUrl.length - 1)
         return (
             <React.Fragment>
-                    <button className="restaurants-selected-button">CHART MY PATH!</button>
+                    <button className="restaurants-selected-button"
+                    >
+                        <a
+                            href={`https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${endpoint}&waypoints=${waypoints}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            CHART MY PATH!
+                        </a>
+                    </button>
                 {returned}
             </React.Fragment>
         )
+    }
+
+    generateMyPathUrl = (startAddress, restaurants) => {
+        let startPoint = encodeURIComponent(startAddress.formatted_address)
+        let restaurantPoints = []
+
+        for (let key in restaurants) {
+            restaurantPoints.push(restaurants[key].name)
+        }
+
+        restaurantPoints = restaurantPoints.map(restaurantPoint => encodeURIComponent(restaurantPoint)).join("&")
+
+        return [startPoint, restaurantPoints]
     }
 }
 
