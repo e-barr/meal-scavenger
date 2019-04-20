@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import FoodChoiceTile from './FoodChoiceTile'
 import './FoodChoiceTileContainer.css'
+import { debug } from 'util';
 
 
 class FoodChoiceTileContainer extends Component {
@@ -29,11 +30,8 @@ class FoodChoiceTileContainer extends Component {
         let returned
         restaurantsLength > 0 ? returned = this.renderTiles(restaurants) : returned = <div>loading...</div>
         const chartMyPathUrl = this.generateMyPathUrl(startAddress, selectedRestaurants)
-        debugger;
-        const origin = chartMyPathUrl[0]
-        const waypoints = chartMyPathUrl[1].slice(0, chartMyPathUrl[1].length - 1)
-        const endpoint = chartMyPathUrl[1].slice(chartMyPathUrl.length - 1)
-        const hrefUrl = Object.keys(selectedFoods).length > 0 ? `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${endpoint}&waypoints=${waypoints}` : '#'
+        // debugger;
+        const hrefUrl = Object.keys(selectedFoods).length > 0 ? `${chartMyPathUrl}` : '#'
         return (
             <React.Fragment>
                     <button className="restaurants-selected-button"
@@ -54,15 +52,33 @@ class FoodChoiceTileContainer extends Component {
     generateMyPathUrl = (startAddress, restaurants) => {
         let startPoint = encodeURIComponent(startAddress.formatted_address)
         let restaurantPoints = []
-        debugger;
-
-        for (let key in restaurants) {
-            restaurantPoints.push(restaurants[key].name)
+        let foodChoices = Object.keys(restaurants)
+        let foodChoicesLength = foodChoices.length
+        let endPoint
+        let hrefUrl = `https://www.google.com/maps/dir/?api=1`
+        
+        for (let i = 0; i < foodChoicesLength; i++) {
+            let key = foodChoices[i]
+            let restaurant = restaurants[key]
+            let info = `${restaurant.name} ${restaurant.location.address1} ${restaurant.location.city}`
+            if (i === foodChoicesLength - 1) {
+                endPoint = encodeURIComponent(info)
+            } else {
+                restaurantPoints.push(info)
+            }
         }
 
-        restaurantPoints = restaurantPoints.map(restaurantPoint => encodeURIComponent(restaurantPoint)).join("&")
+        restaurantPoints = restaurantPoints.map(restaurantPoint => encodeURIComponent(restaurantPoint))
 
-        return [startPoint, restaurantPoints]
+        debugger;
+
+        if (restaurantPoints.length === 1) {
+            hrefUrl += `&origin=${startPoint}&destination=${endPoint}`
+        } else {
+            hrefUrl += `&origin=${startPoint}&destination=${endPoint}&waypoints=${restaurantPoints}`
+        }
+
+        return hrefUrl
     }
 }
 

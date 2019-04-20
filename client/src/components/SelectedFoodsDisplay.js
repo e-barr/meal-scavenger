@@ -11,7 +11,7 @@ const SelectedFoodsDisplay = ({ selectedRestaurants }) => {
 
         for (let food in selectedRestaurants) {
             let restaurant = selectedRestaurants[food]
-            mapped.push(<RestaurantDisplayTile {...restaurant} />)
+            mapped.push(<RestaurantDisplayTile {...restaurant} key={restaurant.id} />)
         }
         return (
             <div className="one-container">
