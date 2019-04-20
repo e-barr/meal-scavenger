@@ -24,11 +24,12 @@ class FoodChoiceTileContainer extends Component {
     }
 
     render() {
-        const { restaurants, startAddress, selectedFoods } = this.props
+        const { restaurants, startAddress, selectedFoods, selectedRestaurants } = this.props
         const restaurantsLength = Object.keys(restaurants).length
         let returned
         restaurantsLength > 0 ? returned = this.renderTiles(restaurants) : returned = <div>loading...</div>
-        const chartMyPathUrl = this.generateMyPathUrl(startAddress, restaurants)
+        const chartMyPathUrl = this.generateMyPathUrl(startAddress, selectedRestaurants)
+        debugger;
         const origin = chartMyPathUrl[0]
         const waypoints = chartMyPathUrl[1].slice(0, chartMyPathUrl[1].length - 1)
         const endpoint = chartMyPathUrl[1].slice(chartMyPathUrl.length - 1)
@@ -53,13 +54,13 @@ class FoodChoiceTileContainer extends Component {
     generateMyPathUrl = (startAddress, restaurants) => {
         let startPoint = encodeURIComponent(startAddress.formatted_address)
         let restaurantPoints = []
+        debugger;
 
         for (let key in restaurants) {
             restaurantPoints.push(restaurants[key].name)
         }
 
         restaurantPoints = restaurantPoints.map(restaurantPoint => encodeURIComponent(restaurantPoint)).join("&")
-        debugger;
 
         return [startPoint, restaurantPoints]
     }
@@ -69,7 +70,8 @@ const mapStateToProps = (state) => {
     return {
         restaurants: state.content.restaurants,
         selectedFoods: state.content.selectedFoods,
-        startAddress: state.content.startAddress
+        startAddress: state.content.startAddress,
+        selectedRestaurants: state.content.selectedRestaurants
     }
 }
 
