@@ -35,7 +35,6 @@ class FoodChoiceTileContainer extends Component {
                             href={hrefUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            // onClick={() => setTimeout(800, this.href = hrefUrl)}
                         >
                         <button
                             className="restaurants-selected-button"
