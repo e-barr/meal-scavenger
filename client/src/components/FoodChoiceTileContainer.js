@@ -29,7 +29,6 @@ class FoodChoiceTileContainer extends Component {
         restaurantsLength > 0 ? returned = this.renderTiles(restaurants) : returned = <div>loading...</div>
         const chartMyPathUrl = this.generateMyPathUrl(startAddress, selectedRestaurants)
         const hrefUrl = Object.keys(selectedFoods).length > 0 ? `${chartMyPathUrl}` : '#'
-        debugger;
         return (
             <React.Fragment>
                         <a
@@ -73,10 +72,8 @@ class FoodChoiceTileContainer extends Component {
         
         
         if (restaurantPoints.length === 0) {
-            debugger;
             hrefUrl += `&origin=${startPoint}&destination=${endPoint}`
         } else {
-            debugger;
             hrefUrl += `&origin=${startPoint}&destination=${endPoint}&waypoints=${encodedRestaurantPoints}`
         }
 
