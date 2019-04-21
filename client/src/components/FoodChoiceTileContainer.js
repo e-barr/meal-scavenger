@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 
 import FoodChoiceTile from './FoodChoiceTile'
 import './FoodChoiceTileContainer.css'
-import { debug } from 'util';
-
 
 class FoodChoiceTileContainer extends Component {
     renderTiles = (restaurants) => {
@@ -30,20 +28,21 @@ class FoodChoiceTileContainer extends Component {
         let returned
         restaurantsLength > 0 ? returned = this.renderTiles(restaurants) : returned = <div>loading...</div>
         const chartMyPathUrl = this.generateMyPathUrl(startAddress, selectedRestaurants)
-        // debugger;
         const hrefUrl = Object.keys(selectedFoods).length > 0 ? `${chartMyPathUrl}` : '#'
         return (
             <React.Fragment>
-                    <button className="restaurants-selected-button"
-                    >
                         <a
                             href={hrefUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => setTimeout(800, this.href = hrefUrl)}
+                        >
+                        <button
+                            className="restaurants-selected-button"
                         >
                             CHART MY PATH!
+                        </button>
                         </a>
-                    </button>
                 {returned}
             </React.Fragment>
         )
@@ -61,6 +60,7 @@ class FoodChoiceTileContainer extends Component {
             let key = foodChoices[i]
             let restaurant = restaurants[key]
             let info = `${restaurant.name} ${restaurant.location.address1} ${restaurant.location.city}`
+
             if (i === foodChoicesLength - 1) {
                 endPoint = encodeURIComponent(info)
             } else {
@@ -68,14 +68,13 @@ class FoodChoiceTileContainer extends Component {
             }
         }
 
-        restaurantPoints = restaurantPoints.map(restaurantPoint => encodeURIComponent(restaurantPoint))
+        let encodedRestaurantPoints = restaurantPoints.map(restaurantPoint => encodeURIComponent(restaurantPoint)).join("|")
 
-        debugger;
-
-        if (restaurantPoints.length === 1) {
+        
+        if (restaurantPoints.length <= 1) {
             hrefUrl += `&origin=${startPoint}&destination=${endPoint}`
         } else {
-            hrefUrl += `&origin=${startPoint}&destination=${endPoint}&waypoints=${restaurantPoints}`
+            hrefUrl += `&origin=${startPoint}&destination=${endPoint}&waypoints=${encodedRestaurantPoints}`
         }
 
         return hrefUrl
