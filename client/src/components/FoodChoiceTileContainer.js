@@ -29,13 +29,14 @@ class FoodChoiceTileContainer extends Component {
         restaurantsLength > 0 ? returned = this.renderTiles(restaurants) : returned = <div>loading...</div>
         const chartMyPathUrl = this.generateMyPathUrl(startAddress, selectedRestaurants)
         const hrefUrl = Object.keys(selectedFoods).length > 0 ? `${chartMyPathUrl}` : '#'
+        debugger;
         return (
             <React.Fragment>
                         <a
                             href={hrefUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={() => setTimeout(800, this.href = hrefUrl)}
+                            // onClick={() => setTimeout(800, this.href = hrefUrl)}
                         >
                         <button
                             className="restaurants-selected-button"
@@ -67,13 +68,15 @@ class FoodChoiceTileContainer extends Component {
                 restaurantPoints.push(info)
             }
         }
-
-        let encodedRestaurantPoints = restaurantPoints.map(restaurantPoint => encodeURIComponent(restaurantPoint)).join("|")
-
         
-        if (restaurantPoints.length <= 1) {
+        let encodedRestaurantPoints = restaurantPoints.map(restaurantPoint => encodeURIComponent(restaurantPoint)).join("|")
+        
+        
+        if (restaurantPoints.length === 0) {
+            debugger;
             hrefUrl += `&origin=${startPoint}&destination=${endPoint}`
         } else {
+            debugger;
             hrefUrl += `&origin=${startPoint}&destination=${endPoint}&waypoints=${encodedRestaurantPoints}`
         }
 

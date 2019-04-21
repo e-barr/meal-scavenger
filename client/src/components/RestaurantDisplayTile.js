@@ -15,7 +15,11 @@ const RestaurantDisplayTile = (props) => {
 
     return (
         <div style={{ margin: '10px' }} className="one">
-            <img src={image_url} className="one-img" alt={name}/>
+            <img
+                src={image_url}
+                className="one-img"
+                alt={name}
+            />
             <div>
 
             <h4><a href={url} target="_blank" rel="noopener noreferrer" >{name}</a></h4>

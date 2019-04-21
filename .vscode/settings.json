@@ -7,7 +7,7 @@
     "editor.codeLens": false,
     "editor.minimap.renderCharacters": false,
     "workbench.iconTheme": "material-icon-theme",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.quickSuggestions": {
         "other": true,
