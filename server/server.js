@@ -17,7 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const getRestaurantInfo = async (req, res) => {
     const { key, term, zip } = req.body
     configuredAxios.defaults.headers.common['Authorization'] = `Bearer ${key}`
-    // configuredAxios.defaults.headers.common['Access-Control-Allow-Origin'] = `http://localhost:3000/`
 
     try {
         const result = await configuredAxios.get(`/search?term=${term}&location=${zip}&limit=10&sort_by=rating`)
